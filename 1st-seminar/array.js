@@ -100,3 +100,7 @@ for(let item of serverPart) {
   serverPartMemberNameStr += item + '! ';
 }
 console.log(serverPartMemberNameStr);
+
+serverPart.forEach( item => {
+  console.log(item);
+})
