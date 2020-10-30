@@ -27,3 +27,5 @@ router.post('/signin', (req, res) => {
 router.get('/', (req, res) => {
   // 1.모든 유저정보 조회 (id, password, salt)!
 })
+
+module.exports = router;
