@@ -23,6 +23,10 @@ module.exports = {
   READ_USER_ALL_SUCCESS: "전체 사용자 조회 실패",
   READ_USER_FAIL: "사용자 조회 성공",
   READ_USER_ALL_FAIL: "전체 사용자 조회 실패",
+  UPDATE_USER_SUCCESS: "사용자 업데이트 성공",
+  UPDATE_USER_FAIL: "사용자 업데이트 실패",
+  DELETE_USER_SUCCESS: "사용자 삭제 성공",
+  DELETE_USER_FAIL: "사용자 삭제 실패",
 
   /* 서버에러 */
   INTERNAL_SERVER_ERROR: "서버 내부 오류",
