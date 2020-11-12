@@ -1,22 +1,24 @@
 const { User, Post } = require('../models');
+
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define('Like', {
-    UserId: {
-      type: DataTypes.INTEGER,
-      reference: {
-        model: User,
-        key: 'id'
-      }
-    },
+    //모델의 Attributes (Column)을 정의하는곳
     PostId: {
       type: DataTypes.INTEGER,
       reference: {
         model: Post,
-        key: 'id'
+        key: 'id',
+      }
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      reference: {
+        model: User,
+        key: 'id',
       }
     },
   }, {
     freezeTableName: true,
-    timestamps: true,
-  });
+    timetables: true,
+  })
 }

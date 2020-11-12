@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const { sequelize } = require('./models');
 
-sequelize.sync({  })
+sequelize.sync({ force: false })
 .then(() => {
   console.log('데이터베이스 연결 성공.');
 })
@@ -41,7 +41,7 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500)
+  res.status(err.status || 500);
   res.render('error');
 });
 

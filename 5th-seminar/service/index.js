@@ -1,3 +1,4 @@
-module.exports.likeService = require('./likeService');
-module.exports.postService = require('./postService');
-module.exports.userService = require('./userService');
+module.exports = {
+  userService: require('./userService'),
+  postService: require('./postService'),
+}
