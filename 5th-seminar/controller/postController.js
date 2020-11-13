@@ -1,3 +1,4 @@
+const sequelize = require('sequelize');
 const ut = require('../modules/util');
 const rm = require('../modules/responseMessage');
 const sc = require('../modules/statusCode');
@@ -19,14 +20,15 @@ module.exports = {
   readAllPosts: async (req, res) => {
     try {
       const posts = await Post.findAll({
-        attributes: ['title', 'contents'],
+        group: 'id',
+        attributes: ['title', 'contents', [sequelize.fn("COUNT", "Liker.Like.PostId"), 'likeCnt']],
         include: [{
           model: User,
-          attributes: ['id', 'userName', 'email'],
+          attributes: ['id', 'userName', 'email' ],
         }, {
           model: User,
           as: 'Liker',
-          attributes: { exclude : ['password', 'salt', 'id', 'email']}
+          attributes: ['userName'],
         }]
       });
       console.log(JSON.stringify(posts, null, 2));
