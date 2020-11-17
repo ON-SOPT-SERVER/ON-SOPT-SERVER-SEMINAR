@@ -9,7 +9,6 @@ module.exports = {
           email,
         }
       });
-      console.log(alreadyEmail);
       return alreadyEmail;
     } catch (err) {
       throw err;
