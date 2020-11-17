@@ -10,13 +10,15 @@ module.exports = {
   MEMBER_DELETE_SUCCESS: "회원 삭제 성공",
 
   /* 회원가입 */
-  SIGN_UP_SUCCESS: "회원가입성공",
-  SIGN_UP_FAIL: "회원 가입 실패",
-  SIGN_IN_SUCCESS: "로그인 성공",
-  SIGN_IN_FAIL: "로그인 실패",
+  SIGN_UP_SUCCESS: "회원 가입 성공.",
+  SIGN_UP_FAIL: "회원 가입 실패.",
+  SIGN_IN_SUCCESS: "로그인 성공.",
+  SIGN_IN_FAIL: "로그인 실패.",
   ALREADY_ID: "존재하는 ID 입니다.",
   NO_USER: "존재하지않는 유저 id 입니다.",
-  MISS_MATCH_PW: "비밀번호가일치하지않습니다",
+  ALREADY_EMAIL: "이미 존재하는 이메일 입니다.",
+  NO_EMAIL: '존재하지 않는 이메일 입니다.',
+  MISS_MATCH_PW: "비밀번호가 일치하지 않습니다",
 
   /* User */
   READ_USER_SUCCESS: "사용자 조회 성공",

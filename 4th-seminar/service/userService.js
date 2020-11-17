@@ -29,5 +29,19 @@ module.exports = {
     } catch (err) {
       throw err;
     }
+  },
+  signin: async (email, password, salt) => {
+    try {
+      const inputPassword = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('base64');
+      const user = await User.findOne({
+        where : {
+          email,
+          password: inputPassword
+        }
+      });
+      return user;
+    } catch (err) {
+      throw err;
+    }
   }
 }

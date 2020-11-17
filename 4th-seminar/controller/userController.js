@@ -14,14 +14,52 @@ module.exports ={
       const alreadyEmail = await userService.emailCheck(email);
       if(alreadyEmail){
         console.log('이미 존재하는 이메일 입니다.');
-        return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_ID));
+        return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_EMAIL));
       }
       const user = await userService.signup(email, password, userName);
      
-      return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.SIGN_UP_SUCCESS, user));
+      return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.SIGN_UP_SUCCESS, {
+        email: user.email,
+        password: user.password,
+        userName: user.userName,
+      }));
     } catch (error) {
       console.error(error);
       return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.SIGN_UP_FAIL));
     }
-  }
+  },
+  signin: async (req, res) => {
+    const {email, password} = req.body; 
+  
+     if(!email || !password) {
+      console.log('필요한 값이 없습니다!');
+      return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
+     }
+     
+      try{
+      const alreadyEmail = await userService.emailCheck(email);
+  
+      if(!alreadyEmail) {
+        console.log('없는 이메일 입니다.');
+        return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_EMAIL));
+      }
+      
+      const { salt, password: hashedPassword } = alreadyEmail;
+      const user = await userService.signin(email,password, salt);
+  
+      if(!user){
+        console.log('비밀번호가 일치하지 않습니다.');
+        return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.MISS_MATCH_PW));
+      }
+  
+      return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.SIGN_IN_SUCCESS, {
+        email: user.email,
+        password: user.password,
+        userName: user.userName,
+      }));
+    } catch (error) {
+      console.error(error);
+      return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.SIGN_IN_FAIL));
+    }
+  },
 }
