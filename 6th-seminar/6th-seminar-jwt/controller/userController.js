@@ -3,6 +3,7 @@ const responseMessage = require('../modules/responseMessage');
 const statusCode = require('../modules/statusCode');
 const { userService } = require('../service');
 const { User } = require('../models');
+const jwt = require('../modules/jwt');
 
 module.exports ={
   signup: async (req, res) => {
@@ -51,11 +52,9 @@ module.exports ={
         console.log('비밀번호가 일치하지 않습니다.');
         return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.MISS_MATCH_PW));
       }
-  
+      const {token , refreshToken } = await jwt.sign(user);
       return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.SIGN_IN_SUCCESS, {
-        email: user.email,
-        password: user.password,
-        userName: user.userName,
+        accessToken: token
       }));
     } catch (error) {
       console.error(error);
@@ -63,6 +62,7 @@ module.exports ={
     }
   },
   readAll: async (req, res) => {
+    console.log(req.decoded);
     try {
       const users = await User.findAll({ attributes: ['id', 'email', 'userName'] });
       return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.USER_READ_ALL_SUCCESS, users));

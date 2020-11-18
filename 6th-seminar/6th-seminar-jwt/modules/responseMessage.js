@@ -39,6 +39,14 @@ module.exports = {
   UPDATE_POST_FAIL: "게시글 업데이트 실패",
   DELETE_POST_SUCCESS: "게시글 삭제 성공",
   DELETE_POST_FAIL: "게시글 삭제 실패",
+
+  /* 토큰 */
+  EMPTY_TOKEN: '토큰 값이 없습니다.',
+  EXPIRED_TOKEN: '토큰 값이 만료되었습니다.',
+  INVALID_TOKEN: '유효하지 않은 토큰값입니다.',
+  AUTH_SUCCESS: '인증에 성공했습니다.',
+  ISSUE_SUCCESS: '새로운 토큰이 생성되었습니다.',
+  
   /* 서버에러 */
   INTERNAL_SERVER_ERROR: "서버 내부 오류",
 }
