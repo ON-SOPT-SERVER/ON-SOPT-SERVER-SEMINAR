@@ -1,6 +1,5 @@
-const randToken = require('rand-token');
 const jwt = require('jsonwebtoken');
-const { secretKey, options } = require('../config/secretKey');
+const { secretKey, options, refreshOptions} = require('../config/secretKey');
 const TOKEN_EXPIRED = -3;
 const TOKEN_INVALID = -2;
 
@@ -12,7 +11,7 @@ module.exports = {
         };
         const result = {
             token: jwt.sign(payload, secretKey, options),
-            refreshToken: randToken.uid(256)
+            refreshToken: jwt.sign(payload, secretKey, refreshOptions),
         };
         return result;
     },
