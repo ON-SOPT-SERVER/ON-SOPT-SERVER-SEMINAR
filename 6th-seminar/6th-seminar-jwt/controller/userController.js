@@ -83,6 +83,17 @@ module.exports ={
       return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_USER_SUCCESS, user));
     } catch (error) {
       console.error(error);
+      return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.READ_USER_ALL_FAIL));    
+    }
+  },
+  getProfile: async (req, res) => {
+    const { id } = req.decoded;
+    console.log(req.decoded);
+    try {
+      const user = await User.findOne({ where : { id }, attributes: ['id', 'userName', 'email']});
+      return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_PROFILE_SUCCESS, user));
+    } catch(err) {
+      console.log(err);
       return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.USER_READ_ALL_FAIL));    
     }
   }

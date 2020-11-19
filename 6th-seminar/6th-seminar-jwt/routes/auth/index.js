@@ -8,7 +8,7 @@ const TOKEN_EXPIRED = -3
 const TOKEN_INVALID = -2
 
 router.get('/', async (req, res) => {
-  const token = req.headers.token;
+  const token = req.headers.jwt;
   if (!token) {
     return res.json(ut.fail(sc.BAD_REQUEST, rm.EMPTY_TOKEN));
   }

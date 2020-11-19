@@ -40,6 +40,10 @@ module.exports = {
   DELETE_POST_SUCCESS: "게시글 삭제 성공",
   DELETE_POST_FAIL: "게시글 삭제 실패",
 
+  /* 프로필 */ 
+  READ_PROFILE_SUCCESS: "프로필 조회 성공",
+  READ_PROFILE_FAIL: "프로필 조회 실패",
+
   /* 토큰 */
   EMPTY_TOKEN: '토큰 값이 없습니다.',
   EXPIRED_TOKEN: '토큰 값이 만료되었습니다.',
