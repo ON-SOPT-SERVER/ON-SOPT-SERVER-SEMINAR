@@ -52,9 +52,10 @@ module.exports ={
         console.log('비밀번호가 일치하지 않습니다.');
         return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.MISS_MATCH_PW));
       }
-      const {token , refreshToken } = await jwt.sign(user);
+      const {accessToken , refreshToken } = await jwt.sign(user);
       return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.SIGN_IN_SUCCESS, {
-        accessToken: token
+        accessToken,
+        refreshToken
       }));
     } catch (error) {
       console.error(error);
