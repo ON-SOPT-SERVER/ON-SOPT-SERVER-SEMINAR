@@ -9,5 +9,4 @@ router.get('/', authUtils.checkToken ,userController.readAll);
 router.get('/profile', authUtils.checkToken, userController.getProfile);
 router.get('/:id', authUtils.checkToken, userController.readOne);
 
-
 module.exports = router;
