@@ -1,6 +1,6 @@
 
 # 서비스 이름
-- 서비스 한줄 소개
+서비스 한줄 소개
 
 ## sequelize Model
 
@@ -19,6 +19,8 @@ db.Post.belongsToMany(db.User, { through: 'Like', as: 'Liker' });
 ```
 
 ## ERD
+
+![ERD](https://github.com/ON-SOPT-SERVER/ON-SOPT-SERVER-SEMINAR/blob/master/5th-seminar/public/images/ERD.png)
 
 ## API 명세서
 
