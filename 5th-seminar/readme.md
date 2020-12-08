@@ -1,6 +1,10 @@
 
 # 서비스 이름
-- 서비스 한줄 소개
+서비스 한줄 소개
+
+## API 명세서
+
+[api 링크](https://github.com/ON-SOPT-SERVER/ON-SOPT-SERVER-SEMINAR/wiki)
 
 ## sequelize Model
 
@@ -20,9 +24,8 @@ db.Post.belongsToMany(db.User, { through: 'Like', as: 'Liker' });
 
 ## ERD
 
-## API 명세서
+![ERD](https://github.com/ON-SOPT-SERVER/ON-SOPT-SERVER-SEMINAR/blob/master/5th-seminar/public/images/ERD.png)
 
-[api 링크](https://github.com/ON-SOPT-SERVER/ON-SOPT-SERVER-SEMINAR/wiki)
 
 
 ## 기능 소개
